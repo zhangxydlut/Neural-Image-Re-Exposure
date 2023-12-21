@@ -562,7 +562,7 @@ def build_e2vid_encoder(in_channels, base_channels, ms_fuse=False, init_with_pre
     net = RecurrentEncoder(**e2vid_kwargs)
     if init_with_pretrained and base_channels == 32:
         e2vid_pretrained = os.path.abspath(os.path.join(os.path.dirname(__file__),
-                                                        '../../tools/rpg_e2vid/pretrained/E2VID_lightweight.pth.tar'))
+                                                        '../../../rpg_e2vid/pretrained/E2VID_lightweight.pth.tar'))
         e2vid_state_dict = torch.load(e2vid_pretrained)['state_dict']
 
         # adapt the origin e2vid state_dict to our model
@@ -588,7 +588,7 @@ def build_e2vid_decoder(in_channels, base_channels, pred_dim=1, init_with_pretra
     net = E2VDecoder(**e2vid_kwargs)
     if init_with_pretrained and base_channels == 32:
         e2vid_pretrained = os.path.abspath(os.path.join(os.path.dirname(__file__),
-                                                        '../../tools/rpg_e2vid/pretrained/E2VID_lightweight.pth.tar'))
+                                                        '../../../rpg_e2vid/pretrained/E2VID_lightweight.pth.tar'))
         e2vid_state_dict = torch.load(e2vid_pretrained)['state_dict']
 
         # adapt the origin e2vid state_dict to our model

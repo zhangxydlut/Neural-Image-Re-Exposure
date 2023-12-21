@@ -35,36 +35,7 @@ pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu113/torch1.1
 ```
 
 ## Quick Start
-1. Download the pre-trained model from [google drive](https://drive.google.com/file/d/1bzSskeYmndYyO-YejqA6eMcMB__hZtEF/view?usp=share_link).
 
-2. Process data with scripts in `datasets/`. Please refer to the guidances of specific scrips 
-   (e.g. [script for processing gopro for deblurring, vfi, jdfi](datasets/GoPro1280x720/GoPro1280x720.md)).
-
-3. Run the testing scrips
 ```
-export MODEL_PATH=path/to/the/donwloaded/models/60000_G.pth
-
-# Pick a script for testing 
-python test.py --vis --fast_test --test_opt=options/test/GoPro-VFI7.yml --model_path=$MODEL_PATH
-python test.py --vis --fast_test --test_opt=options/test/GoPro-VFI15.yml --model_path=$MODEL_PATH
-python test.py --vis --fast_test --test_opt=options/test/GoPro-JDFI.yml --model_path=$MODEL_PATH
-python test.py --vis --fast_test --test_opt=options/test/GoPro-Deblur-720p.yml --model_path=$MODEL_PATH
-python test.py --vis --fast_test --test_opt=options/test/GevRS-Unroll.yml --model_path=$MODEL_PATH
-```
-
-
-## Training
-1. Process data with scripts in `datasets/`. Please refer to the guidances of specific scrips 
-   (e.g. [script for processing gopro for deblurring, vfi, jdfi](datasets/GoPro1280x720/GoPro1280x720.md)).
-
-2. Run the training script
-```
-python -m torch.distributed.launch --nproc_per_node=1 train.py \
--opt options/train/nire/train_NIRE.yml \
---launch=pytorch \
---auto_resume \
---overwrite n_workers 2 \
---overwrite batch_size 2 \
---overwrite schedule_scale 1x \
---overwrite exp_name NIRE-MT
+python run_nire.py
 ```

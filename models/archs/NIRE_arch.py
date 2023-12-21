@@ -1,9 +1,9 @@
 import torch
 import torch.nn as nn
-from models.modules.im_encoder.nafnet.naf_modules import NAFEncoder
-from models.modules.e2vid_modules import build_e2vid_encoder, build_e2vid_decoder
-from models.modules.temporalize_tsfmr import NerfPositionalEncoding, TemporalizeModuleMS
-from models.pyramid import SeqFeatPyramid, CombinedPyramid, get_pyramid_shape
+from ..modules.im_encoder.nafnet.naf_modules import NAFEncoder
+from ..modules.e2vid_modules import build_e2vid_encoder, build_e2vid_decoder
+from ..modules.temporalize_tsfmr import NerfPositionalEncoding, TemporalizeModuleMS
+from ..pyramid import SeqFeatPyramid, CombinedPyramid, get_pyramid_shape
 
 DEBUG = False
 debug_cnt = 0
@@ -65,14 +65,14 @@ class NeuralFilmPyramid(nn.Module):
         return [vir_feat_pyr] * seq_len
 
 
-class AnyPixEF(nn.Module):
+class NIRE(nn.Module):
     """ NIRE Architecture
     Architecture for Neural Image Re-Exposure
     """
     def __init__(self, opt):
-        super(AnyPixEF, self).__init__()
+        super(NIRE, self).__init__()
         self.opt = opt
-        self.empty_cache = not opt['is_train'] and not opt['fast_test']
+        self.empty_cache = False
         self.setup_options()
         self.build_network()
 

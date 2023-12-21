@@ -1,0 +1,35 @@
+name: AnyPixEF5-MT3
+use_tb_logger: true
+engine: AnyPix
+model: AnyPixEF5
+n_bins: 36
+
+network:
+  base_channel: 32
+  att_window:
+  - 2
+  - 2
+  att_lvl:
+  - 0
+  - 1
+  - 2
+  - 3
+  im_dim: 3
+  vg_dim: 6
+  pe_dim: 16
+
+path:
+  root: ~
+  pretrain_model_G: experiments/AnyPixEF5-MT3/models/latest_G.pth
+  strict_load: false
+  resume_state: experiments/AnyPixEF5-MT3/training_state/latest.state
+  models: experiments/AnyPixEF5-MT3/models
+  training_state: experiments/AnyPixEF5-MT3/training_state
+  experiments_root: experiments/AnyPixEF5-MT3
+  log: experiments/AnyPixEF5-MT3
+  val_images: experiments/AnyPixEF5-MT3/val_images
+
+logger:
+  print_freq: 100
+  tb_logger: null
+  save_checkpoint_freq: 15000

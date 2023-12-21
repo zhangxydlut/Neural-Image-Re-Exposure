@@ -29,7 +29,7 @@ class NerfPositionalEncoding(nn.Module):
         return out
 
 
-from models.modules.ffn_layer import FeedForward
+from .ffn_layer import FeedForward
 from einops import rearrange
 
 
